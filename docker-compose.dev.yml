@@ -12,12 +12,15 @@ services:
     container_name: lago_traefik
     ports:
       - 80:80
-      - 443:443
+      - 443:443      
+      - "8080:8080" # The Web UI (enabled by --api)
     volumes:
       - ./traefik/traefik.yml:/etc/traefik/traefik.yml
       - ./traefik/dynamic.yml:/etc/traefik/dynamic.yml
       - ./traefik/certs:/etc/certs
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    command:
+      - "--api.insecure=true"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.rule=Host(`traefik.lago.dev`)"
@@ -80,7 +83,7 @@ services:
     command: ["./scripts/start.dev.sh"]
     build:
       context: ./api
-      dockerfile: $LAGO_PATH/api/Dockerfile.dev
+      dockerfile: $LAGO_PATH/Dockerfile.dev
     volumes:
       - $LAGO_PATH/api:/app:delegated
     environment:
