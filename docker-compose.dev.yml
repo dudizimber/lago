@@ -103,6 +103,7 @@ services:
       - LAGO_LICENSE=${LAGO_LICENSE:-}
       - LAGO_FROM_EMAIL=${LAGO_FROM_EMAIL:-noreply@getlago.com}
       - LAGO_SIDEKIQ_WEB=${LAGO_SIDEKIQ_WEB:-true}
+      - LAGO_DISABLE_SIGNUP=${LAGO_DISABLE_SIGNUP:-false}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.api_http.rule=Host(`api.lago.dev`)"
