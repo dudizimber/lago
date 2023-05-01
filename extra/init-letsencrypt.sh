@@ -72,4 +72,4 @@ docker compose run --rm --entrypoint "\
 echo
 
 echo "### Reloading nginx ..."
-docker compose exec restart --force-recreate nginx
+docker compose restart nginx
