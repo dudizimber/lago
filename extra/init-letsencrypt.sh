@@ -37,11 +37,6 @@ docker compose run --rm --entrypoint "\
     -subj '/CN=localhost'" certbot
 echo
 
-
-echo "### Starting front ..."
-docker compose up --force-recreate -d front
-echo
-
 echo "### Deleting dummy certificate for $domains ..."
 docker compose run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/live/$domains && \
@@ -77,4 +72,4 @@ docker compose run --rm --entrypoint "\
 echo
 
 echo "### Reloading nginx ..."
-docker compose exec front nginx -s reload
+docker compose exec nginx nginx -s reload
