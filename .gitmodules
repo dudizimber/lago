@@ -3,4 +3,4 @@
 	url = git@github.com:dudizimber/lago-api.git
 [submodule "front"]
 	path = front
-	url = git@github.com:dudizimber/lago-front.git
+	url = https://github.com/dudizimber/lago-front
